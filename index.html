@@ -43,7 +43,6 @@
     .rail-tab{min-width:150px;}
   }
 
-  /* ---- left rail: folder tabs ---- */
   .rail{
     border-right:1px solid var(--line);
     display:flex;
@@ -67,6 +66,14 @@
     color:var(--ink-soft);
     letter-spacing:.14em;
     margin-top:6px;
+  }
+  .rail-note{
+    padding:14px 22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
   }
   .rail-tab{
     display:flex;
@@ -104,8 +111,7 @@
   }
   .rail-tab:hover:not(.active){background:rgba(0,0,0,.03);}
 
-  /* ---- main ---- */
-  .main{padding:36px 44px 60px 44px; max-width:900px;}
+  .main{padding:36px 44px 60px 44px; max-width:920px;}
   .stamp{
     display:inline-block;
     font-family:'IBM Plex Mono', monospace;
@@ -125,7 +131,7 @@
     margin:0 0 6px 0;
     line-height:1.3;
   }
-  .sub{color:var(--ink-soft); font-size:13.5px; margin:0 0 28px 0; line-height:1.7;}
+  .sub{color:var(--ink-soft); font-size:13.5px; margin:0 0 24px 0; line-height:1.7;}
 
   label{
     display:block;
@@ -136,19 +142,20 @@
     margin-bottom:8px;
   }
   label .hint{font-family:'Noto Sans TC', sans-serif; font-weight:400; letter-spacing:0; font-size:11px;}
-  textarea, input[type=text]{
+  textarea, input[type=text], select{
     width:100%;
     background:var(--card);
     border:1px solid var(--line);
     border-radius:3px;
-    padding:14px;
+    padding:11px 12px;
     font-family:'Noto Sans TC', sans-serif;
-    font-size:14px;
+    font-size:13.5px;
     color:var(--ink);
     resize:vertical;
   }
-  textarea{min-height:260px; line-height:1.8;}
-  textarea:focus, input[type=text]:focus{outline:2px solid var(--jade); outline-offset:1px;}
+  textarea{min-height:80px; line-height:1.75;}
+  #input-article{min-height:260px; padding:14px; font-size:14px;}
+  textarea:focus, input[type=text]:focus, select:focus{outline:2px solid var(--jade); outline-offset:1px;}
   .field{margin-bottom:20px;}
   .row2{display:grid; grid-template-columns:1fr 220px; gap:16px;}
   @media (max-width:600px){.row2{grid-template-columns:1fr;}}
@@ -171,13 +178,16 @@
     background:transparent;
     color:var(--ink-soft);
     border:1px solid var(--line);
-    padding:11px 18px;
+    padding:10px 16px;
     font-family:'Noto Sans TC', sans-serif;
-    font-size:13px;
+    font-size:12.5px;
     border-radius:3px;
     cursor:pointer;
   }
   button.ghost:hover{border-color:var(--ink-soft); color:var(--ink);}
+  button.ghost.small{padding:6px 10px; font-size:11.5px;}
+  button.ghost.danger{color:var(--brick); border-color:var(--brick-soft);}
+  button.ghost.danger:hover{background:var(--brick-soft); border-color:var(--brick);}
   .btn-row{display:flex; gap:10px; align-items:center; margin-top:8px; flex-wrap:wrap;}
 
   .err{
@@ -190,6 +200,16 @@
     margin-top:16px;
     white-space:pre-wrap;
   }
+  .info{
+    background:var(--jade-soft);
+    border:1px solid var(--jade);
+    color:#1F3A2E;
+    padding:12px 14px;
+    border-radius:3px;
+    font-size:13px;
+    margin:16px 0;
+    line-height:1.7;
+  }
   .loading{
     display:flex; align-items:center; gap:10px;
     font-family:'IBM Plex Mono', monospace;
@@ -197,11 +217,7 @@
     color:var(--ink-soft);
     margin-top:14px;
   }
-  .dot{
-    width:6px;height:6px;border-radius:50%;
-    background:var(--brick);
-    animation:pulse 1s infinite ease-in-out;
-  }
+  .dot{width:6px;height:6px;border-radius:50%; background:var(--brick); animation:pulse 1s infinite ease-in-out;}
   @keyframes pulse{0%,100%{opacity:.25;}50%{opacity:1;}}
 
   .card{
@@ -211,36 +227,22 @@
     padding:22px 24px;
     margin-bottom:18px;
   }
-  .card h3{
-    font-family:'Noto Serif TC', serif;
-    font-size:16px;
-    margin:0 0 4px 0;
-  }
-  .kv{display:grid; grid-template-columns:110px 1fr; gap:8px 14px; margin-top:14px;}
-  .kv dt{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); padding-top:2px;}
-  .kv dd{margin:0; font-size:13.5px; line-height:1.75;}
 
-  .faq-item{
+  /* ---- FAQ editable items ---- */
+  .faq-edit-item{
     background:var(--card);
     border:1px solid var(--line);
     border-left:3px solid var(--jade);
     border-radius:3px;
-    padding:18px 20px;
+    padding:16px 18px;
     margin-bottom:14px;
   }
-  .faq-tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;}
-  .tag{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:10px;
-    letter-spacing:.04em;
-    padding:2px 8px;
-    border-radius:2px;
-    background:var(--jade-soft);
-    color:var(--jade);
-  }
-  .tag.kw{background:var(--brick-soft); color:var(--brick);}
-  .faq-q{font-weight:700; font-size:14.5px; margin:0 0 8px 0; line-height:1.6;}
-  .faq-a{font-size:13.5px; line-height:1.85; color:var(--ink); margin:0; white-space:pre-wrap;}
+  .faq-edit-row{display:flex; gap:10px; margin-bottom:12px; align-items:center;}
+  .faq-edit-row select{max-width:180px;}
+  .faq-edit-row input.faq-keywords{flex:1;}
+  .faq-edit-item label{margin-top:10px;}
+  .faq-edit-item textarea.faq-question{min-height:50px;}
+  .faq-edit-item textarea.faq-answer{min-height:110px;}
 
   .reco{
     background:var(--jade-soft);
@@ -250,7 +252,7 @@
     font-size:13px;
     line-height:1.8;
     color:#1F3A2E;
-    margin-top:6px;
+    margin:14px 0;
   }
   .reco b{color:var(--jade);}
 
@@ -282,7 +284,7 @@
   .empty{
     color:var(--ink-soft);
     font-size:13px;
-    padding:30px 0;
+    padding:24px 0;
     text-align:center;
     font-family:'IBM Plex Mono', monospace;
   }
@@ -295,34 +297,17 @@
     font-family:'IBM Plex Mono', monospace;
   }
 
-  /* ---- lang switch (step 2) ---- */
   .lang-switch{
-    display:flex;
-    gap:6px;
-    margin-bottom:18px;
-    background:#EFEBDE;
-    border-radius:6px;
-    padding:4px;
-    max-width:320px;
+    display:flex; gap:6px; margin-bottom:18px;
+    background:#EFEBDE; border-radius:6px; padding:4px; max-width:320px;
   }
   .lang-switch button{
-    flex:1;
-    background:transparent;
-    color:var(--ink-soft);
-    border:none;
-    padding:9px 10px;
-    font-family:'Noto Sans TC', sans-serif;
-    font-size:12.5px;
-    font-weight:600;
-    border-radius:4px;
-    cursor:pointer;
+    flex:1; background:transparent; color:var(--ink-soft); border:none;
+    padding:9px 10px; font-family:'Noto Sans TC', sans-serif; font-size:12.5px;
+    font-weight:600; border-radius:4px; cursor:pointer;
   }
-  .lang-switch button.active{
-    background:var(--brick);
-    color:var(--card);
-  }
+  .lang-switch button.active{background:var(--brick); color:var(--card);}
 
-  /* ---- field groups (step 2) ---- */
   .field-group{
     border:1px dashed var(--line);
     border-radius:6px;
@@ -338,9 +323,7 @@
     margin-bottom:10px;
   }
   .field-group label{margin-top:10px;}
-  .field-group input[type=text], .field-group textarea{margin-bottom:4px;}
 
-  /* ---- live preview of case-overview block (matches production CSS) ---- */
   .case-overview h2{font-family:'Noto Serif TC', serif; font-size:16px; margin:0 0 12px;}
   .case-overview table{width:100%; border-collapse:collapse;}
   .case-overview td{padding:9px 10px; border-bottom:1px solid var(--line); font-size:13.5px; vertical-align:top;}
@@ -352,10 +335,11 @@
 <div class="app">
   <div class="rail">
     <div class="rail-brand">Enspyre<br>Case Studies Blog Tools<small>SEO × GEO FAQ PIPELINE</small></div>
+    <div class="rail-note">01 貼上案例後，02／03／04 三個功能各自獨立，可任意順序使用，不用照順序跑。</div>
     <div class="rail-tab active" data-step="1"><span class="num">01</span>貼上案例<span class="status pending" id="status-1">待輸入</span></div>
-    <div class="rail-tab" data-step="2"><span class="num">02</span>專案概覽<span class="status pending" id="status-2">待生成</span></div>
-    <div class="rail-tab" data-step="3"><span class="num">03</span>FAQ 設計<span class="status pending" id="status-3">待生成</span></div>
-    <div class="rail-tab" data-step="4"><span class="num">04</span>結構化資料<span class="status pending" id="status-4">待生成</span></div>
+    <div class="rail-tab" data-step="2"><span class="num">02</span>專案概覽<span class="status pending" id="status-2">獨立功能</span></div>
+    <div class="rail-tab" data-step="3"><span class="num">03</span>FAQ 設計<span class="status pending" id="status-3">獨立功能</span></div>
+    <div class="rail-tab" data-step="4"><span class="num">04</span>結構化資料<span class="status pending" id="status-4">獨立功能</span></div>
   </div>
 
   <div class="main">
@@ -364,35 +348,34 @@
     <section id="panel-1">
       <div class="stamp">STEP 01 / INPUT</div>
       <h1>貼上案例研究文章</h1>
-      <p class="sub">貼上完整 Case Study 文章內容。核心關鍵字可留空，系統會依文章內容自動建議，你也可以在下一步覆寫。</p>
+      <p class="sub">貼上完整 Case Study 文章內容後，左側 02／03／04 隨時可以直接點進去使用，各功能會直接讀取這裡的文章內容，彼此不互相依賴。</p>
 
       <div class="field">
         <label>CASE STUDY 全文</label>
         <textarea id="input-article" placeholder="在此貼上完整案例研究文章……"></textarea>
       </div>
-      <div class="row2">
-        <div class="field">
-          <label>核心關鍵字（選填，留空則自動建議）</label>
-          <input type="text" id="input-keyword" placeholder="例如：B2B 業務開發、AI 行銷自動化…">
-        </div>
-        <div class="field" style="display:flex; align-items:flex-end;">
-          <button class="primary" id="btn-step1" style="width:100%;">產生專案概覽 →</button>
-        </div>
+      <div class="field">
+        <label>核心關鍵字（選填，留空則各功能會自動判斷）</label>
+        <input type="text" id="input-keyword" placeholder="例如：B2B 業務開發、AI 行銷自動化…">
       </div>
-      <div id="err-1"></div>
-      <div id="loading-1"></div>
+      <div class="btn-row">
+        <button class="ghost" onclick="showPanel(2)">→ 前往 02 專案概覽</button>
+        <button class="ghost" onclick="showPanel(3)">→ 前往 03 FAQ 設計</button>
+        <button class="ghost" onclick="showPanel(4)">→ 前往 04 結構化資料</button>
+      </div>
     </section>
 
     <!-- STEP 2 -->
     <section id="panel-2" style="display:none;">
-      <div class="stamp">STEP 02 / OVERVIEW</div>
+      <div class="stamp">02 / OVERVIEW（獨立功能）</div>
       <h1>專案概覽 Case Overview</h1>
-      <p class="sub">依既有的 <code>case-overview</code> 表格格式自動萃取欄位（客戶／產業／服務／市場／成果），中英文分開存放，下方可再手動微調後切換輸出語言。</p>
+      <p class="sub">依既有的 <code>case-overview</code> 表格格式萃取欄位（客戶／產業／服務／市場／成果），中英文分開，可再手動微調後切換輸出語言。</p>
 
+      <button class="primary" id="btn-gen-overview">AI 自動萃取欄位</button>
       <div id="err-2"></div>
       <div id="loading-2"></div>
 
-      <div id="overview-body" style="display:none;">
+      <div id="overview-body" style="margin-top:20px;">
         <div class="lang-switch">
           <button id="ov-btnZh" class="active" data-lang="zh">純中文 Chinese only</button>
           <button id="ov-btnEn" data-lang="en">純英文 English only</button>
@@ -400,90 +383,69 @@
 
         <div class="field-group">
           <div class="field-group-title">客戶 Client</div>
-          <label>中文</label>
-          <input type="text" id="ov-clientZh">
-          <label>English</label>
-          <input type="text" id="ov-clientEn">
+          <label>中文</label><input type="text" id="ov-clientZh">
+          <label>English</label><input type="text" id="ov-clientEn">
         </div>
-
         <div class="field-group">
           <div class="field-group-title">所屬產業 Industry</div>
-          <label>中文</label>
-          <input type="text" id="ov-industryZh">
-          <label>English</label>
-          <input type="text" id="ov-industryEn">
+          <label>中文</label><input type="text" id="ov-industryZh">
+          <label>English</label><input type="text" id="ov-industryEn">
         </div>
-
         <div class="field-group">
           <div class="field-group-title">採用服務 Service</div>
-          <label>中文</label>
-          <input type="text" id="ov-serviceZh">
-          <label>English</label>
-          <input type="text" id="ov-serviceEn">
+          <label>中文</label><input type="text" id="ov-serviceZh">
+          <label>English</label><input type="text" id="ov-serviceEn">
           <label>服務連結 <span class="hint">Link（選填，留空則不加超連結）</span></label>
           <input type="text" id="ov-serviceLink">
         </div>
-
         <div class="field-group">
           <div class="field-group-title">開發市場 Target Market</div>
-          <label>中文</label>
-          <input type="text" id="ov-marketZh">
-          <label>English</label>
-          <input type="text" id="ov-marketEn">
+          <label>中文</label><input type="text" id="ov-marketZh">
+          <label>English</label><input type="text" id="ov-marketEn">
         </div>
-
         <div class="field-group">
           <div class="field-group-title">成果 Results</div>
-          <label>中文 <span class="hint">(可換行)</span></label>
-          <textarea id="ov-resultZh" rows="2"></textarea>
-          <label>English <span class="hint">(line breaks allowed)</span></label>
-          <textarea id="ov-resultEn" rows="2"></textarea>
+          <label>中文 <span class="hint">(可換行)</span></label><textarea id="ov-resultZh" rows="2"></textarea>
+          <label>English <span class="hint">(line breaks allowed)</span></label><textarea id="ov-resultEn" rows="2"></textarea>
         </div>
 
         <p class="preview-label">輸出程式碼</p>
         <div class="copy-bar">
           <span class="hint" id="ov-lang-hint">目前輸出：純中文</span>
-          <button class="ghost" id="btn-copy-overview">複製程式碼</button>
+          <button class="ghost small" id="btn-copy-overview">複製程式碼</button>
         </div>
         <pre class="code-block" id="overview-code"></pre>
 
         <p class="preview-label">預覽</p>
         <div class="card"><div id="overview-preview" class="case-overview"></div></div>
       </div>
-
-      <div class="btn-row" style="margin-top:22px;">
-        <button class="primary" id="btn-step2" disabled>產生 FAQ + 結構化資料 →</button>
-        <button class="ghost" id="btn-regen-overview">重新以 AI 萃取</button>
-        <button class="ghost" id="btn-back-1">← 回上一步修改</button>
-      </div>
     </section>
 
     <!-- STEP 3 -->
     <section id="panel-3" style="display:none;">
-      <div class="stamp">STEP 03 / FAQ</div>
+      <div class="stamp">03 / FAQ（獨立功能，內容可編輯）</div>
       <h1>FAQ 設計（SEO × GEO）</h1>
-      <p class="sub">依 LLM 搜尋意圖設計，可獨立被引用的問答組合。</p>
+      <p class="sub">依 LLM 搜尋意圖設計，可獨立被引用的問答組合。生成後可直接在下方修改文字、調整意圖標籤，或手動新增／刪除單一組。</p>
+
+      <div class="btn-row">
+        <button class="primary" id="btn-gen-faq">AI 產生 FAQ</button>
+        <button class="ghost" id="btn-add-faq">＋ 手動新增一組</button>
+      </div>
       <div id="err-3"></div>
       <div id="loading-3"></div>
-      <div id="faq-content"><div class="empty">尚未生成</div></div>
       <div id="reco-content"></div>
-      <div class="btn-row" style="margin-top:22px;">
-        <button class="primary" id="btn-goto-4">查看結構化資料 (JSON-LD) →</button>
-        <button class="ghost" id="btn-retry-faq">重新生成 FAQ</button>
-        <button class="ghost" id="btn-back-2">← 回專案概覽</button>
-      </div>
+
+      <div id="faq-list" style="margin-top:18px;"><div class="empty">尚未生成，也可以直接點「手動新增一組」自行輸入</div></div>
     </section>
 
     <!-- STEP 4 -->
     <section id="panel-4" style="display:none;">
-      <div class="stamp">STEP 04 / SCHEMA</div>
+      <div class="stamp">04 / SCHEMA（獨立功能）</div>
       <h1>結構化資料 JSON-LD</h1>
-      <p class="sub">依 schema.org FAQPage 規格產出，可直接貼入文章 &lt;head&gt; 或透過 GTM 注入。</p>
-      <div id="jsonld-content"><div class="empty">尚未生成</div></div>
-      <div class="btn-row" style="margin-top:22px;">
-        <button class="ghost" id="btn-back-3">← 回 FAQ</button>
-        <button class="ghost" id="btn-restart">重新開始一篇新案例</button>
-      </div>
+      <p class="sub">依 schema.org FAQPage 規格，直接讀取「03 FAQ」目前編輯框裡的內容產生。修改過 FAQ 後，按下方按鈕即可重新整理。</p>
+
+      <button class="primary" id="btn-gen-jsonld">由目前 FAQ 內容產生 JSON-LD</button>
+      <div id="jsonld-content" style="margin-top:18px;"><div class="empty">尚未生成</div></div>
     </section>
 
   </div>
@@ -492,14 +454,7 @@
 <div class="toast" id="toast">已複製到剪貼簿</div>
 
 <script>
-const state = {
-  article: '',
-  keyword: '',
-  overview: null,   // { client:{zh,en}, industry:{zh,en}, service:{zh,en}, service_link, market:{zh,en}, results:{zh,en} }
-  faqs: null,
-  recommendation: '',
-  jsonld: ''
-};
+const state = { faqCounter: 0 };
 let ovLang = 'zh';
 
 function showPanel(step){
@@ -509,13 +464,7 @@ function showPanel(step){
   }
 }
 document.querySelectorAll('.rail-tab').forEach(tab=>{
-  tab.addEventListener('click', ()=>{
-    const step = parseInt(tab.dataset.step, 10);
-    if(step===1) return showPanel(1);
-    if(step===2 && state.overview) return showPanel(2);
-    if(step===3 && state.faqs) return showPanel(3);
-    if(step===4 && state.jsonld) return showPanel(4);
-  });
+  tab.addEventListener('click', ()=> showPanel(parseInt(tab.dataset.step, 10)));
 });
 
 function setStatus(step, text, done){
@@ -535,6 +484,9 @@ function escapeHtml(s){
   return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
+function getArticle(){ return document.getElementById('input-article').value.trim(); }
+function getKeyword(){ return document.getElementById('input-keyword').value.trim(); }
+
 /* ---------- robust JSON extraction from model output ---------- */
 function extractJson(rawText){
   let raw = rawText.trim();
@@ -542,15 +494,11 @@ function extractJson(rawText){
   try{
     return JSON.parse(raw);
   }catch(e){
-    // fallback: try to slice from first { to last } in case of stray leading/trailing text
     const start = raw.indexOf('{');
     const end = raw.lastIndexOf('}');
     if(start !== -1 && end !== -1 && end > start){
-      try{
-        return JSON.parse(raw.slice(start, end+1));
-      }catch(e2){
-        throw new Error('回傳內容不是合法 JSON（可能被截斷）：' + e2.message);
-      }
+      try{ return JSON.parse(raw.slice(start, end+1)); }
+      catch(e2){ throw new Error('回傳內容不是合法 JSON（可能被截斷）：' + e2.message); }
     }
     throw new Error('回傳內容不是合法 JSON：' + e.message);
   }
@@ -562,52 +510,33 @@ async function callClaude(system, userText, maxTokens){
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       model: "claude-sonnet-4-6",
-      max_tokens: maxTokens || 1000,
+      max_tokens: maxTokens || 1500,
       system: system,
       messages: [{ role: "user", content: userText }]
     })
   });
-  if(!response.ok){
-    throw new Error('API 請求失敗（狀態碼 ' + response.status + '）');
-  }
+  if(!response.ok) throw new Error('API 請求失敗（狀態碼 ' + response.status + '）');
   const data = await response.json();
   const textBlock = (data.content || []).find(b => b.type === 'text');
   if(!textBlock) throw new Error('未收到有效回應內容');
-  if(data.stop_reason === 'max_tokens'){
-    console.warn('回應在達到 max_tokens 上限時被截斷');
-  }
   return extractJson(textBlock.text);
 }
 
 /* =========================================================
-   STEP 1 -> STEP 2 : 萃取固定欄位格式的 Case Overview
+   02 專案概覽（獨立功能）
    ========================================================= */
-document.getElementById('btn-step1').addEventListener('click', ()=>runOverviewExtraction());
-document.getElementById('btn-regen-overview').addEventListener('click', ()=>runOverviewExtraction());
-
-async function runOverviewExtraction(){
-  const article = document.getElementById('input-article').value.trim();
-  const keyword = document.getElementById('input-keyword').value.trim();
-  const errEl = document.getElementById('err-1');
-  const errEl2 = document.getElementById('err-2');
-  const loadEl = document.getElementById('loading-1');
-  const loadEl2 = document.getElementById('loading-2');
-  errEl.innerHTML = ''; errEl2.innerHTML = '';
-
+document.getElementById('btn-gen-overview').addEventListener('click', async ()=>{
+  const article = getArticle();
+  const errEl = document.getElementById('err-2');
+  const loadEl = document.getElementById('loading-2');
+  errEl.innerHTML = '';
   if(!article){
-    errEl.innerHTML = '<div class="err">請先貼上案例研究文章內容。</div>';
+    errEl.innerHTML = '<div class="err">請先回到「01 貼上案例」貼上文章內容。</div>';
     return;
   }
-  state.article = article;
-  state.keyword = keyword;
-
-  const btn1 = document.getElementById('btn-step1');
-  const btn2 = document.getElementById('btn-regen-overview');
-  btn1.disabled = true; btn2.disabled = true;
+  const btn = document.getElementById('btn-gen-overview');
+  btn.disabled = true;
   loadEl.innerHTML = '<div class="loading"><span class="dot"></span>正在萃取專案概覽欄位…</div>';
-  loadEl2.innerHTML = '<div class="loading"><span class="dot"></span>正在萃取專案概覽欄位…</div>';
-  document.getElementById('overview-body').style.display = 'none';
-  document.getElementById('btn-step2').disabled = true;
 
   const system = `你是B2B行銷內容編輯，任務是閱讀使用者貼上的客戶案例研究(Case Study)文章，並「只根據文章實際內容」萃取以下五個固定欄位，用於填入公司網站既有的 case-overview 表格格式。不可捏造文章未提及的資訊；若文章確實沒有提到某欄位，該欄位留空字串。
 
@@ -620,17 +549,13 @@ async function runOverviewExtraction(){
  "service": {"zh": "案例中採用的服務/方案名稱", "en": "..."},
  "service_link": "若文章中有明確提及的服務頁網址則填寫，否則為空字串",
  "market": {"zh": "開發/服務的目標市場或客群", "en": "..."},
- "results": {"zh": "具體成果，優先使用文章出現的數字，可用全形頓號或句號分隔多項，不要用真正的換行符", "en": "..."},
- "core_keyword_suggestion": "根據文章內容推論出最適合的核心SEO/GEO關鍵字，1組詞"
+ "results": {"zh": "具體成果，優先使用文章出現的數字，可用全形頓號或句號分隔多項，不要用真正的換行符", "en": "..."}
 }
 所有字串內容都不可包含真正的換行字元。`;
-  const userMsg = (keyword ? `使用者指定核心關鍵字：${keyword}\n\n` : '') + `案例研究文章：\n${article}`;
+  const userMsg = (getKeyword() ? `使用者指定核心關鍵字：${getKeyword()}\n\n` : '') + `案例研究文章：\n${article}`;
 
   try{
-    const result = await callClaude(system, userMsg, 1500);
-    state.overview = result;
-    if(!state.keyword) state.keyword = result.core_keyword_suggestion || '';
-
+    const result = await callClaude(system, userMsg, 1200);
     document.getElementById('ov-clientZh').value = result.client?.zh || '';
     document.getElementById('ov-clientEn').value = result.client?.en || '';
     document.getElementById('ov-industryZh').value = result.industry?.zh || '';
@@ -642,34 +567,23 @@ async function runOverviewExtraction(){
     document.getElementById('ov-marketEn').value = result.market?.en || '';
     document.getElementById('ov-resultZh').value = result.results?.zh || '';
     document.getElementById('ov-resultEn').value = result.results?.en || '';
-
-    document.getElementById('overview-body').style.display = 'block';
-    document.getElementById('btn-step2').disabled = false;
     generateOverviewOutput();
-
-    setStatus(1, '已輸入', true);
     setStatus(2, '已生成', true);
-    showPanel(2);
   }catch(e){
-    const msg = '<div class="err">生成失敗：' + escapeHtml(e.message) + '</div>';
-    errEl.innerHTML = msg;
-    errEl2.innerHTML = msg;
+    errEl.innerHTML = '<div class="err">生成失敗：' + escapeHtml(e.message) + '</div>';
   }finally{
-    btn1.disabled = false; btn2.disabled = false;
-    loadEl.innerHTML = ''; loadEl2.innerHTML = '';
+    btn.disabled = false;
+    loadEl.innerHTML = '';
   }
-}
+});
 
-/* ---- overview field-group: build HTML matching production case-overview format ---- */
 const OV_LABELS = {
   zh: { title: '專案概覽', client: '客戶', industry: '所屬產業', service: '採用服務', market: '開發市場', result: '成果' },
   en: { title: 'Case Overview', client: 'Client', industry: 'Industry', service: 'Service', market: 'Target Market', result: 'Results' }
 };
-
 function ovMultiline(text){
   return escapeHtml((text||'').trim()).split('\n').filter(l=>l.length).join('<br>\n        ');
 }
-
 function buildOverviewHTML(lang){
   const L = OV_LABELS[lang];
   const suf = lang === 'zh' ? 'Zh' : 'En';
@@ -679,11 +593,9 @@ function buildOverviewHTML(lang){
   const serviceLink = document.getElementById('ov-serviceLink').value.trim();
   const market = escapeHtml(document.getElementById('ov-market'+suf).value.trim());
   const result = ovMultiline(document.getElementById('ov-result'+suf).value);
-
   const serviceContent = serviceLink
     ? `<a href="${escapeHtml(serviceLink)}">\n          ${serviceName}\n        </a>`
     : serviceName;
-
   return `<div class="case-overview">
   <h2>
     ${L.title}
@@ -732,7 +644,6 @@ function buildOverviewHTML(lang){
   </table>
 </div>`;
 }
-
 function generateOverviewOutput(){
   const html = buildOverviewHTML(ovLang);
   document.getElementById('overview-code').textContent = html;
@@ -740,37 +651,79 @@ function generateOverviewOutput(){
   document.getElementById('overview-preview').innerHTML = inner;
   document.getElementById('ov-lang-hint').textContent = '目前輸出：' + (ovLang === 'zh' ? '純中文' : '純英文');
 }
-
 document.getElementById('ov-btnZh').addEventListener('click', ()=>{ ovLang='zh'; document.getElementById('ov-btnZh').classList.add('active'); document.getElementById('ov-btnEn').classList.remove('active'); generateOverviewOutput(); });
 document.getElementById('ov-btnEn').addEventListener('click', ()=>{ ovLang='en'; document.getElementById('ov-btnEn').classList.add('active'); document.getElementById('ov-btnZh').classList.remove('active'); generateOverviewOutput(); });
-
 ['ov-clientZh','ov-clientEn','ov-industryZh','ov-industryEn','ov-serviceZh','ov-serviceEn','ov-serviceLink','ov-marketZh','ov-marketEn','ov-resultZh','ov-resultEn'].forEach(id=>{
   document.getElementById(id).addEventListener('input', generateOverviewOutput);
 });
-
 document.getElementById('btn-copy-overview').addEventListener('click', ()=>{
-  const text = document.getElementById('overview-code').textContent;
-  navigator.clipboard.writeText(text).then(()=>toast('已複製程式碼到剪貼簿'));
+  navigator.clipboard.writeText(document.getElementById('overview-code').textContent).then(()=>toast('已複製程式碼到剪貼簿'));
 });
-
-document.getElementById('btn-back-1').addEventListener('click', ()=>showPanel(1));
+generateOverviewOutput(); // render empty shell once
 
 /* =========================================================
-   STEP 2 -> STEP 3 : FAQ 生成
+   03 FAQ（獨立功能，內容可編輯）
    ========================================================= */
-document.getElementById('btn-step2').addEventListener('click', ()=>runFaqGeneration());
-document.getElementById('btn-retry-faq').addEventListener('click', ()=>runFaqGeneration());
+const INTENT_OPTIONS = ['Problem','How','Value','Comparison','UseCase','DecisionCriteria'];
 
-async function runFaqGeneration(){
+function createFaqItem(f){
+  state.faqCounter += 1;
+  const id = 'faq-' + state.faqCounter;
+  const wrap = document.createElement('div');
+  wrap.className = 'faq-edit-item';
+  wrap.dataset.id = id;
+  wrap.innerHTML = `
+    <div class="faq-edit-row">
+      <select class="faq-intent">
+        ${INTENT_OPTIONS.map(o=>`<option value="${o}">${o}</option>`).join('')}
+      </select>
+      <input type="text" class="faq-keywords" placeholder="關鍵字/語意群，逗號分隔">
+      <button class="ghost small danger faq-delete" type="button">刪除</button>
+    </div>
+    <label>問題 Q</label>
+    <textarea class="faq-question" rows="2" placeholder="使用者可能直接問LLM的自然語言問題"></textarea>
+    <label>答案 A</label>
+    <textarea class="faq-answer" rows="4" placeholder="第一句直接回答，接著補充證據/數據/流程"></textarea>
+  `;
+  wrap.querySelector('.faq-intent').value = f?.search_intent && INTENT_OPTIONS.includes(f.search_intent) ? f.search_intent : 'How';
+  wrap.querySelector('.faq-keywords').value = f?.keywords || '';
+  wrap.querySelector('.faq-question').value = f?.question || '';
+  wrap.querySelector('.faq-answer').value = f?.answer || '';
+  wrap.querySelector('.faq-delete').addEventListener('click', ()=>{
+    wrap.remove();
+    if(document.querySelectorAll('.faq-edit-item').length === 0){
+      document.getElementById('faq-list').innerHTML = '<div class="empty">尚未生成，也可以直接點「手動新增一組」自行輸入</div>';
+    }
+  });
+  return wrap;
+}
+
+function renderFaqEditor(faqs){
+  const list = document.getElementById('faq-list');
+  list.innerHTML = '';
+  faqs.forEach(f => list.appendChild(createFaqItem(f)));
+}
+
+document.getElementById('btn-add-faq').addEventListener('click', ()=>{
+  const list = document.getElementById('faq-list');
+  if(list.querySelector('.empty')) list.innerHTML = '';
+  list.appendChild(createFaqItem(null));
+});
+
+document.getElementById('btn-gen-faq').addEventListener('click', async ()=>{
+  const article = getArticle();
   const errEl = document.getElementById('err-3');
   const loadEl = document.getElementById('loading-3');
   errEl.innerHTML = '';
-  const btn = document.getElementById('btn-step2');
-  const btnRetry = document.getElementById('btn-retry-faq');
-  btn.disabled = true; if(btnRetry) btnRetry.disabled = true;
+  if(!article){
+    errEl.innerHTML = '<div class="err">請先回到「01 貼上案例」貼上文章內容。</div>';
+    return;
+  }
+  const btn = document.getElementById('btn-gen-faq');
+  btn.disabled = true;
   loadEl.innerHTML = '<div class="loading"><span class="dot"></span>正在依 SEO × GEO 意圖設計 FAQ…</div>';
 
-  const system = `你是B2B內容策略師，任務是根據一篇客戶案例研究(Case Study)文章與其專案概覽，設計3-5組適合放在文章結尾的FAQ，目標是SEO + GEO（Generative Engine Optimization）。
+  const system = `你是B2B內容策略師，任務是根據一篇客戶案例研究(Case Study)文章，設計3-5組適合放在文章結尾的FAQ，目標是SEO + GEO（Generative Engine Optimization）。
 
 設計原則（必須嚴格遵守）：
 1. 問題必須來自文章真實存在的痛點、解決方案或成果，不可創造文章沒有提到的資訊。
@@ -796,91 +749,67 @@ async function runFaqGeneration(){
  "recommendation": "說明哪一題最值得保留，以及原因（依可被AI引用價值判斷，單行文字）"
 }
 3到5組即可，不要超過5組。`;
-
-  const userMsg = `核心關鍵字：${state.keyword}\n\n專案概覽：${JSON.stringify(state.overview)}\n\n案例研究文章全文：\n${state.article}`;
+  const userMsg = `核心關鍵字：${getKeyword()}\n\n案例研究文章全文：\n${article}`;
 
   try{
     const result = await callClaude(system, userMsg, 4096);
-    state.faqs = result.faqs || [];
-    state.recommendation = result.recommendation || '';
-    renderFaqs(state.faqs, state.recommendation);
-    buildJsonLd(state.faqs);
+    renderFaqEditor(result.faqs || []);
+    document.getElementById('reco-content').innerHTML = result.recommendation
+      ? `<div class="reco"><b>建議保留：</b>${escapeHtml(result.recommendation)}</div>` : '';
     setStatus(3, '已生成', true);
-    setStatus(4, '已生成', true);
-    showPanel(3);
   }catch(e){
-    errEl.innerHTML = '<div class="err">FAQ 生成失敗：' + escapeHtml(e.message) + '\n\n可以點下方「重新生成 FAQ」再試一次；若持續失敗，可嘗試縮短文章內容後再試。</div>';
+    errEl.innerHTML = '<div class="err">FAQ 生成失敗：' + escapeHtml(e.message) + '\n\n可以再按一次「AI 產生 FAQ」重試；若持續失敗，可嘗試縮短文章內容後再試。</div>';
   }finally{
-    btn.disabled = false; if(btnRetry) btnRetry.disabled = false;
+    btn.disabled = false;
     loadEl.innerHTML = '';
   }
+});
+
+/* =========================================================
+   04 結構化資料（獨立功能，讀取 03 目前編輯內容）
+   ========================================================= */
+function collectFaqsFromEditor(){
+  return Array.from(document.querySelectorAll('.faq-edit-item')).map(item => ({
+    question: item.querySelector('.faq-question').value.trim(),
+    answer: item.querySelector('.faq-answer').value.trim(),
+    search_intent: item.querySelector('.faq-intent').value,
+    keywords: item.querySelector('.faq-keywords').value.trim()
+  })).filter(f => f.question && f.answer);
 }
 
-function renderFaqs(faqs, reco){
-  const html = faqs.map(f => `
-    <div class="faq-item">
-      <div class="faq-tags">
-        <span class="tag">${escapeHtml(f.search_intent||'')}</span>
-        ${(f.keywords||'').split(',').filter(k=>k.trim()).map(k=>`<span class="tag kw">${escapeHtml(k.trim())}</span>`).join('')}
-      </div>
-      <p class="faq-q">Q：${escapeHtml(f.question||'')}</p>
-      <p class="faq-a">A：${escapeHtml(f.answer||'')}</p>
-    </div>
-  `).join('');
-  document.getElementById('faq-content').innerHTML = html || '<div class="empty">未產生任何FAQ</div>';
-  document.getElementById('reco-content').innerHTML = reco
-    ? `<div class="reco"><b>建議保留：</b>${escapeHtml(reco)}</div>` : '';
-}
-
-document.getElementById('btn-back-2').addEventListener('click', ()=>showPanel(2));
-
-/* ---------- STEP 3 -> STEP 4 : build JSON-LD locally (deterministic) ---------- */
-function buildJsonLd(faqs){
+document.getElementById('btn-gen-jsonld').addEventListener('click', ()=>{
+  const faqs = collectFaqsFromEditor();
+  const container = document.getElementById('jsonld-content');
+  if(faqs.length === 0){
+    container.innerHTML = `<div class="info">目前「03 FAQ 設計」還沒有任何完整的問答內容。請先切換到 03 分頁，用「AI 產生 FAQ」或「手動新增一組」建立內容後，再回來點一次這個按鈕。
+      <div class="btn-row" style="margin-top:10px;"><button class="ghost small" onclick="showPanel(3)">→ 前往 03 FAQ 設計</button></div>
+    </div>`;
+    return;
+  }
   const jsonld = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": faqs.map(f => ({
       "@type": "Question",
-      "name": f.question || "",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": f.answer || ""
-      }
+      "name": f.question,
+      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
     }))
   };
-  state.jsonld = JSON.stringify(jsonld, null, 2);
-  document.getElementById('jsonld-content').innerHTML = `
+  const jsonldStr = JSON.stringify(jsonld, null, 2);
+  container.innerHTML = `
     <div class="copy-bar">
-      <span class="hint">SCHEMA.ORG / FAQPage — 貼入 &lt;script type="application/ld+json"&gt; 標籤內</span>
-      <button class="ghost" id="btn-copy-jsonld">複製 JSON-LD</button>
+      <span class="hint">依目前 ${faqs.length} 組 FAQ 產生 — SCHEMA.ORG / FAQPage</span>
+      <button class="ghost small" id="btn-copy-jsonld">複製 JSON-LD</button>
     </div>
     <pre class="code-block">&lt;script type="application/ld+json"&gt;
-${escapeHtml(state.jsonld)}
+${escapeHtml(jsonldStr)}
 &lt;/script&gt;</pre>
   `;
   document.getElementById('btn-copy-jsonld').addEventListener('click', ()=>{
-    const full = '<script type="application/ld+json">\n' + state.jsonld + '\n<\/script>';
+    const full = '<script type="application/ld+json">\n' + jsonldStr + '\n<\/script>';
     navigator.clipboard.writeText(full).then(()=>toast('已複製 JSON-LD 到剪貼簿'));
   });
-}
-
-document.getElementById('btn-goto-4').addEventListener('click', ()=>showPanel(4));
-document.getElementById('btn-back-3').addEventListener('click', ()=>showPanel(3));
-
-document.getElementById('btn-restart').addEventListener('click', ()=>{
-  state.article=''; state.keyword=''; state.overview=null; state.faqs=null; state.recommendation=''; state.jsonld='';
-  document.getElementById('input-article').value='';
-  document.getElementById('input-keyword').value='';
-  ['ov-clientZh','ov-clientEn','ov-industryZh','ov-industryEn','ov-serviceZh','ov-serviceEn','ov-serviceLink','ov-marketZh','ov-marketEn','ov-resultZh','ov-resultEn'].forEach(id=>{
-    document.getElementById(id).value = '';
-  });
-  document.getElementById('overview-body').style.display = 'none';
-  document.getElementById('btn-step2').disabled = true;
-  document.getElementById('faq-content').innerHTML = '<div class="empty">尚未生成</div>';
-  document.getElementById('reco-content').innerHTML = '';
-  document.getElementById('jsonld-content').innerHTML = '<div class="empty">尚未生成</div>';
-  [1,2,3,4].forEach(i=>setStatus(i, i===1?'待輸入':'待生成', false));
-  showPanel(1);
+  setStatus(4, '已生成', true);
 });
 </script>
 </body>
